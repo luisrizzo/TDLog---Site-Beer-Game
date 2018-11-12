@@ -1,0 +1,11 @@
+blockquote {
+  background-color: black;
+  color: yellow;
+  padding: 10px;
+}
+
+.cite {
+  text-align: right;
+  font-weight: bold;
+  font-size: x-large;
+}
