@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Cats Everywhere!</title>	
+    <title>Welcome to the Argon Learning Playground!</title>	
 
     <link     href='http://fonts.googleapis.com/css?family=Sintony:400,700'     rel='stylesheet' type='text/css'>
 
@@ -28,7 +28,7 @@
         width:500px;
         height:200px;
         text-align:center;
-        background-image:url(http://i.imgur.com/MQHYB.jpg);
+        background-image:url(https://msnglnk.com/wp-content/uploads/2015/12/facilitate-the-beer-game@2x.jpg);
         background-repeat:no-repeat;
         border-radius:5px;
         margin:90px auto auto;
@@ -48,14 +48,21 @@
 
   <body>
     <div id="banner">
-      <h1>cats everywhere</h1>
-      <p class="lead">We're bringing cats to the internet. Free.     Cute. Awesome.</p>
+      <h1>Beer Game</h1>
+      <p class="lead">We are making an AI Agent. Join us</p>
     </div>
     <div id="emailform">
 
     </div>
 	<form action="/signup" method="post">
-	  <input type="text" name="email"></input>
+    Email: <br>
+	  <input type="text" name="email"></input> <br>
+    Position of the agent in the Supply Chain <br>
+    <input type="radio" name="position" value="1"> Retailer<br>
+    <input type="radio" name="position" value="2" checked> Wholesaler<br>
+    <input type="radio" name="position" value="3"> Distributor<br>
+    <input type="radio" name="position" value="4"> Factory<br>
+
 	  <input type="submit" value="Signup"></input>
 	</form>
   </body>
