@@ -42,7 +42,6 @@ def get_data():
 
 	key_dict = ",".join(map(str,(lt,',',agentpos,',',demand_type,',',TS)))
 	data_part_2 = open_database(key_dict)
-	print (data_part_2)
 
 	data_to_send = json.dumps((hIL,data_part_2))
 	return data_to_send

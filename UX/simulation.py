@@ -4,6 +4,7 @@ from IPython.display import clear_output
 import re
 
 import sys
+sys.path.insert(0, '../Confidential/')
 
 import BeerGame as BG
 import Agent as Agent
