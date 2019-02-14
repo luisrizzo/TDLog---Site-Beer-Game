@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width = device-width, initial-scale = 1">
+	<title>What is an AI Beer Game</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <link     href='http://fonts.googleapis.com/css?family=Sintony:400,700'     rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+	<div class ="container">
+	<div class="page-header">
+		<h1>Home Page</h1>
+	</div>
+
+	<div class = "container">
+		<div class = "row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<h4>Beer Game</h4>
+					<form action="/signup" method="post">
+					    Email: <br>
+						  <input type="text" name="email"></input> <br>
+					    Position of the agent in the Supply Chain <br>
+					    <input type="radio" name="position" value="1"> Retailer<br>
+					    <input type="radio" name="position" value="2" checked> Wholesaler<br>
+					    <input type="radio" name="position" value="3"> Distributor<br>
+					    <input type="radio" name="position" value="4"> Factory<br>
+
+						  <input type="submit" value="Signup"></input>
+					</form>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<h4>The RL Intelligent Agent in action</h4>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<h4>Our simulation parameters adapt to your situation</h4>
+			</div>
+		    <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12">
+		    	<h1><a href="#lineChart" data-toggle="collapse">World population over time</a></h1>
+			    <canvas id="lineChart" width="1600" height="900"></canvas>
+		    	<h2><a href="#barChart" data-toggle="collapse">Number of people (in millions) living on earth, the last 500 years</a></h2>
+			    <canvas id="barChart" width="1600" height="900"></canvas>
+    			<script>
+    				// Our labels along the x-axis
+					var years = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
+					// For drawing the lines
+					var africa = [86,114,106,106,107,111,133,221,783,2478];
+					var asia = [282,350,411,502,635,809,947,1402,3700,5267];
+					var europe = [168,170,178,190,203,276,408,547,675,734];
+					var latinAmerica = [40,20,10,16,24,38,74,167,508,784];
+					var northAmerica = [6,3,2,2,7,26,82,172,312,433];
+
+					var linectx = document.getElementById("lineChart");
+					var lineChart = new Chart(linectx, 
+					{
+						type: 'line',
+						data: 
+						{
+						    labels: years,
+						    datasets:
+						    [
+						    	{ data: africa,
+						        label: "Africa",
+						        borderColor: "#3e95cd",
+								fill: false },
+						    	{ data: asia,
+						        label: "Asia",
+						        borderColor: "#008000",
+								fill: false },
+								{ data: europe,
+						        label: "Europe",
+						        borderColor: "#ff0000",
+								fill: false },
+								{ data: latinAmerica,
+						        label: "LatinAmerica",
+						        borderColor: "#800080",
+								fill: false },
+								{ data: northAmerica,
+						        label: "NorthAmerica",
+						        borderColor: "#00FFFF",
+								fill: false }
+						    ]
+						  }
+					});
+					var barctx = document.getElementById("barChart");
+					var barChart = new Chart(barctx, 
+					{
+						type: 'bar',
+						data: 
+						{
+						    labels: years,
+						    datasets:
+						    [
+						    	{ data: africa,
+						        label: "Africa",
+						        backgroundColor: "#3e95cd"},
+						    	{ data: asia,
+						        label: "Asia",
+						        backgroundColor: "#008000"},
+								{ data: europe,
+						        label: "Europe",
+						        backgroundColor: "#ff0000"},
+								{ data: latinAmerica,
+						        label: "LatinAmerica",
+						        backgroundColor: "#800080"},
+								{ data: northAmerica,
+						        label: "NorthAmerica",
+						        backgroundColor: "#00FFFF"}
+						    ]
+						  }
+					});
+    			</script>
+		    </div>
+
+		</div>
+	</div>
+	<h2> Next section</h2>
+	<div class="container">
+	  <div class="row">
+	  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+	 
+	      <!-- We can collapse or hide data on the screen -->
+	      <h4><a href="#col1Content" data-toggle="collapse">Column 1</a></h4>
+	 
+	      <!-- With collapse in this div shows on load -->
+	      <div id="col1Content" class="collapse in">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla at libero at finibus a pretium justo nulla sit amet nunc. Vestibulum finibus, lacus at gravida condimentum, tellus mauris imperdiet orci.</div>
+	    </div>
+	    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+	      <h4><a href="#col2Content" data-toggle="collapse">Column 2</a></h4>
+	 
+	      <!-- With class collapse this div won't show on load -->
+	      <div id="col2Content" class="collapse">Quisque rutrum augue odio, eu placerat diam bibendum id. Donec at fringilla leo, non varius magna. Vestibulum finibus, lacus at gravida condimentum, tellus mauris imperdiet orci, a pretium justo nulla sit amet nunc. Class aptent taciti sociosqu ad litora torquent per conubia.</div>
+	    </div>
+	    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	      <h4><a href="#col3Content" data-toggle="collapse">Column 3</a></h4>
+	      <div id="col3Content" class="collapse">Pellentesque vulputate faucibus leo, non blandit ante faucibus maximus. Nunc non neque laoreet, tincidunt nisl et, tristique odio. Nullam imperdiet sollicitudin neque malesuada ornare. Curabitur ultrices urna id gravida lacinia. Nunc eu neque vitae nisi luctus rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac.</div>
+	    </div>
+	  </div>
+	</div><br>
+	<div class="well hidden-sm hidden-md hidden-lg">
+		<p>Screen &lt; 768px</p>
+		</div>
+		 
+		<div class="well hidden-md hidden-lg">
+		<p>Screen &gt;= 768px and &lt; 992px</p>
+		</div>
+		 
+		<div class="well hidden-lg">
+		<p>Screen &gt;= 992px and &lt; 1200px</p>
+	</div>
+	<div class="jumbotron">
+		<p> Launch simulation </p>
+		<div class="btn-group btn-group-lg" role="group" aria-label="...">
+		  <button type="button" class="btn btn-default">Small</button>
+		  <button type="button" class="btn btn-default">Medium</button>
+		  <button type="button" class="btn btn-default">Large</button>
+		</div>
+		<!-- BUTTONS -->
+		<!-- There are many built in button colors and sizes. If a link is to trigger in page functionality it should use role="button". The button element should be used in most situations -->
+		<p>
+		<a href="#" class = "btn btn-default btn-lg" role="button">More info</a>
+		<button type="submit" class = "btn btn-danger" role = "button">Button</button>
+		<input type="button" value="Info" class = "btn btn-info">
+		<button type="submit" class = "btn-primary btn-sm">Primary</button>
+		<button type="submit" class = "btn btn-success btn-xs">Success</button>
+		<button type="submit" class = "btn btn-warning btn-lg">Warning</button>
+		<button type="submit" class = "btn btn-link btn-lg">Link</button>
+		 
+		<!-- You can disable buttons with disabled -->
+		<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary</button>
+		 
+		<!-- You disable links in a similar way -->
+		<a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* This stylesheet is used for simulation page */
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+
+    /*position: fixed; */
+    /*overflow-y: scroll; */
+    /*width: 100%; */
+}
+
+[id^=demt-] {
+    display: none;
+}
+
+[id^=demt-] + label{
+    display: inline-block;
+    vertical-align: middle;
+    color: #555;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+[id^=demt-]:checked + label {
+    color: tomato;
+    cursor: text;
+    opacity: 1.0;
+}
+
+div.img_contain {
+    /* position: relative;
+    /* display: inline-block;
+    /* width: 10vh;
+    height: 10vh; */
+    /* background-color: #009FFD; */
+}
+
+[id^=clip-] {
+    /* position: absolute; */
+    /* clip-path: inset(0px 20px 20px 0px);
+    /* width: 10vh;
+    height: 10vh; */
+}
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: #009FFD;
+    border-color: #0083D0;
+}
+
+.btn-primary:hover {
+    background-color: #0091E6;
+    border-color: #0083D0;
+}
+
+.btn-primary:focus {
+    background-color: #0091E6;
+    border-color: #0083D0;
+}

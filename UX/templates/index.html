@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Argon - AI for a Supply Chain </title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Include new stylesheet to custom index page -->
+    <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100|Roboto+Condensed:700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    
+	<script src="/static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    
+    <!-- Include animate stylesheet for wowjs -->
+    <!--
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+    //-->
+
+    <!-- Script for animation wowjs -->
+    <!--
+    <script src="/static/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    //-->
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- Scrollme work only with 2.1.1 -->
+    <!-- Include scrollme -->
+    <script src="/static/js/jquery.scrollme.min.js"></script>
+
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.wowjs"></script> -->
+</head>
+
+<!-- The scrollable area -->
+<body data-spy="scroll" data-target="#slideNavbar" data-offset="20">
+    <div class="navbar navbar-default">
+       
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#siteNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Beer game</a>
+            </div>
+            <div class="collapse navbar-collapse" id="siteNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#section1">Home</a></li>
+                    <li><a href="/simulation">Simulation</a></li>
+                    <li><a href="#">Info</a></li>
+                </ul>
+           
+        </div>
+    </div>
+ 
+
+<!--  <div class = "container">
+    <div class="page-header">
+      <h1><a href="/">Home Page</a>    <a href=/simulation>Simulation</a></h1>
+    </div>
+  </div>
+  //-->
+     
+		 <div id="intro" class="header-container fs">
+		            <header class="wrapper">
+		               <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+		                         <h3>Artificial Intelligence in a Supply Chain</h3>
+                <p>Artificial Intelligence, Internet of Things, Block Chain are all terms that became worldwide trends. Here you will be able to explore a real application of AI that will make things more concrete.</p>
+                <p><a href="#AIobs" data-toggle="collapse">More about the AI trend</a></p>
+                <p id="AIobs" class="collapse">Artificial Intelligence is booming in the recent years due to the combination of multiple factors. Technology advancements, data collection, IoT have all helped AI researchers to develop more and more industry solutions. The Moore's law and the augmentation of computational power made impossible analysis possible and more complex calculations can be solved every year. If you want to learn what are the implications of these advancements to real industries <a href="https://www.mckinsey.com/business-functions/mckinsey-analytics/our-insights/an-executives-guide-to-ai">read this article </a></p>
+		               </div>
+		               
+		                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 white-back"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+		                         <h5><a href="#MooreChart" data-toggle="collapse">Moore's Law</a></h5>
+                  <canvas id="MooreChart" width="800" height="450"></canvas>
+		                     </div>
+		            </header>
+		            <span class="scroll-hint">Scroll Down</span>
+		        </div>
+		
+		        <nav>
+		            <ul>
+		                <li><a href="#intro"><span class="nav-dot"></span><span class="nav-label">Intro</span></a></li>
+		                <li><a href="#slide01"><span class="nav-dot"></span><span class="nav-label">Slide One</span></a></li>
+		                <li><a href="#slide02"><span class="nav-dot"></span><span class="nav-label">Slide Two</span></a></li>
+		                <li><a href="#slide03"><span class="nav-dot"></span><span class="nav-label">Slide Three</span></a></li>
+		            </ul>
+		        </nav>
+		
+		        <div class="main-container">
+		            
+		            <article id="slide01" class="slide fs">
+		                <div class="wrapper">
+		                    <header>
+		                        <h1 class="slideInUp">Application in a Beer Game Simulation</h1>
+		                    </header>
+		                    <div class="container-fluid">
+					
+<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+                <h4>Application in a Beer Game Simulation</h4>
+                <p>The beergame is a simulation where players enact a four stage supply chain for a beer supply chain. Manufacturer, Distributor, Wholesaler and Retailer are the 4 roles played and each player has to decide everyday how much to order according to inventory levels and the demand it received. But what happens when humans are replaced by AI agents?</p>
+                <p><a href="#playthegame" data-toggle="collapse">Learn more about the beer game</a></p>
+                <p id="playthegame" class="collapse">The goal  is to produce and deliver units of beer: the factory produces and the other three stages deliver the beer units until it reaches the customer at the downstream end of the chain. The game is played in multiple Universities and MBA programs all around the World. You can play one online version of the game and compete agains other AI by clicking in image illustrating this comment. In our site we are focusing in presenting the performance of the AI agent developed by the Argon Consulting Digital team. We have tested our agent in multiple scenarios and give you an overview of when the agents best perform. <a href="/simulation"> Click here to go directly to the simulation></a></p>
+</div>
+      
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+                <a href="https://beergame.opexanalytics.com/">
+                    <img src="/static/img/OpexBeerGames.PNG" class="img-responsive" alt="Responsive image">
+                </a>
+            </div>			       
+								
+								       
+		                    </div>
+		                </div> <!-- .wrapper -->
+		            </article>
+		
+		            <article id="slide02" class="slide fs">
+		                <div class="wrapper">
+		                    <header>
+		                        <h1 class="slideInUp">Can AI can beat classic Supply Chain Stock formulas?</h1>
+		                    </header>
+		                    <div class="container-fluid">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+<p>Supply Chain formulas works with theoretical models and simplifications. But real world is doesn't behave that way and AI algorithms might achieve greater results by learning the nuances that are lost in the simplifications.<br/>
+To test it we cannot stay on the theory, there need to be simulations and direct comparisons.</p>
+        </div>
+
+		                    </div>
+		                </div> <!-- .wrapper -->
+		            </article>
+		
+		            <article id="slide03" class="slide is-light fs">
+		                <div class="wrapper">
+		                    <header>
+		                        <h1 class="slideInUp">But how the AI learns?</h1>
+		                    </header>
+		                    <div class="container-fluid">
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+            <h2>How the AI learns?</h2>
+            <p class="slideInUp">Our AI is classed as using a Reinforced Learning Algorithm. After hundreds, thousands or even millions of simulations the AI algorithms learns how to achieve optimal total costs.<a href="#RLExplained" data-toggle="collapse">But how?</a>This is the same technique used by Deep Blue to beat Kasparov in Chess. Or more recently by Deep Mind to beat the human World Champion of Go.</p>
+            <p id="RLExplained" class="collapse slideInUp">Learning from interaction with the environment comes from our natural experiences. Reinforced Learning (RL) applies this concept to mathematical algorithms. To learn more click on the image<a href = "https://medium.freecodecamp.org/an-introduction-to-reinforcement-learning-4339519de419"><img src="/static/img/RL.PNG" class="img-responsive" alt="Responsive image"></a></p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+            <img src = "/static/img/DeepBlue.png" class="img-responsive" alt="Responsive image">
+        </div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+            <h2>Does it work in my case?</h2>
+            <p>We have created a couple base scenarios to test the performance our AI agent. In quite a few of them the AI agent is able to outperform current supply chain formulas. If you want to see which are those cases go to our <a href="/simulation">Simulation page</a> </p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+            <img src = "/static/img/Industries.png" class="img-responsive" alt="Responsive image">
+        </div>
+
+				
+							
+								
+		                    </div>
+		                </div> <!-- .wrapper -->
+		            </article>
+
+			<article id="slide04" class="slide is-light fs">
+		                <div class="wrapper">
+		                    <header>
+		                        <h1 class="slideInUp">How the AI learns?</h1>
+		                    </header>
+		                    <div class="container-fluid">
+
+	 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+            <h2>Leave your contact if you want to know more information about the AI agent or if you need to test a different scenario.</h2>
+            <form action="/signup" method="post">
+                Email: <br>
+                <input type="text" name="email"></input>
+                <input type="submit" value="Signup"></input>
+            </form>
+        </div>		
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+            data-when="enter" 
+            data-from="0.5" 
+            data-to="0.4"
+            data-opacity="0" 
+        >
+        <h4><a href="#barChart" data-toggle="collapse">AI performance with different Demand Courbes</a></h4>
+        <canvas id="barChart" width="1600" height="900"></canvas>
+      </div>							
+							
+								
+		                    </div>
+		                </div> <!-- .wrapper -->
+		            </article>
+
+<article id="slide05" class="slide is-light fs">
+		                <div class="wrapper">
+		                    <header>
+		                        <h1 class="slideInUp">How the AI learns?</h1>
+		                    </header>
+		                    <div class="container-fluid">
+
+<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <h1><a href="#lineChart" data-toggle="collapse">AI performance while learning</a></h1>
+          <canvas id="lineChart" width="1600" height="900"></canvas>
+        </div>
+        
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <p>Not all agents are able to perform equally. The Machine Learning has its limits as well</p>
+          <a href="#limits" data-toggle="collapse"> Learn about limits</a>
+          <p id="limits" class = "collapse">Sometimes Base Stock formulas really are very effective and the AI agent can't beat them. Some times our current system is unable to learn due to its limits. With custom work on the algorithms this result can be changed most of the times.</p>
+        </div>
+
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2>Go to <a href="/simulation">Simulation page</a> to see in depth results</h2></div>					
+							
+								
+		                    </div>
+		                </div> <!-- .wrapper -->
+		            </article>
+		
+		        </div> <!-- #main-container -->
+		
+		        <div class="footer-container">
+		            
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2> About Section </h2></div>
+        <h4>Click on sections to learn more</h4>
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+   
+            <!-- We can collapse or hide data on the screen -->
+            <h4><a href="#col1Content" data-toggle="collapse">Ponts Team</a></h4>
+   
+            <!-- With collapse in this div shows on load -->
+            <div id="col1Content" class="collapse">Students from Ecole Nationale des Ponts et Chaussées<br/>
+                Currently enrolled in the 3rd year of studies in the Industrial and Mecanical Engineering Departements <br/>
+                Daniel Toshihiro Okane<br/>Luis Augusto Yokota Rizzo<br/>Egor Sedov</div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+            <h4><a href="#col2Content" data-toggle="collapse">Argon Consulting Team</a></h4>
+               
+            <!-- With class collapse this div won't show on load -->
+            <div id="col2Content" class="collapse">Members of Argon Digital team that supervised and supported the students during the development of this project<br/>Samuel Demont <br/> Hamza Kabbaj </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <h4><a href="#col3Content" data-toggle="collapse">Our goals with this Page</a></h4>
+            <div id="col3Content" class="collapse">Present the results of our AI project team while also learning how to create simple and effective informative web pages.</div>
+        </div>
+		        </div>
+		<!--
+		
+		
+        <div id="section1" >
+        
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 scrollme animateme"
+                data-when="exit" 
+                data-from="0" 
+                data-to="0.5"
+                data-easing="easeinout"
+                data-opacity="0" 
+            >
+                <h4>What is a Beer Game</h4>
+                <p>In the beergame students enact a four stage supply chain. The task is to produce and deliver units of beer: the factory produces and the other three stages deliver the beer units until it reaches the customer at the downstream end of the chain.</p>
+                <p><a href="#playthegame" data-toggle="collapse">Learn more about it</a></p>
+                <p id="playthegame" class="collapse">The game is played in multiple Universities all around the World. You can play one online version of the game and compete agains other AI by clicking in image illustrating this comment</p>
+            </div>
+      
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                <a href="https://beergame.opexanalytics.com/">
+                    <img src="/static/img/OpexBeerGames.PNG" class="img-responsive" alt="Responsive image">
+                </a>
+            </div>
+        </div>
+
+        <div id="section2" >
+
+            <!-- <hr class="whitespace" style="height: 40vh;"> --*>
+
+      <!--
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h4>Creating an AI agent</h4>
+      <p>Using Reinforced Learning we can make an AI agent that outperforms the popular Security Stock Formulas and other.</p>
+      <button data-toggle="collapse" data-target="#learnAI">  It is the same principle of AI that plays videogames. Check this out</button>
+      <div id="learnAI" class="collapse embed-responsive embed-responsive-16by9">
+          <p>We can try to briefly explain with this video:</p><br/> --*>
+      <!--  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/V1eYniJ0Rnk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --*>
+      <!--</div>
+      </div> --*>
+        
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0" 
+            data-to="1.0"
+            data-opacity="0" 
+        >
+            <h2>1From digital world to real industries</h2>
+            <p>To shall. Very earth female. Whales behold thing fill abundantly hath they&#39;re. Earth of from greater hath grass said fish sixth lesser that Air waters gathered years wherein one isn&#39;t darkness replenish so fruit make of gathered Bearing one. Set fly. And isn&#39;t man i saying made darkness fruitful i. Light moveth second make cattle light over divide years fruitful. Dry. Their given. Spirit. Every whales creeping given.</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.3" 
+            data-to="1.0"
+            data-opacity="0" 
+        >
+            <h2>2From digital world to real industries</h2>
+            <p>To shall. Very earth female. Whales behold thing fill abundantly hath they&#39;re. Earth of from greater hath grass said fish sixth lesser that Air waters gathered years wherein one isn&#39;t darkness replenish so fruit make of gathered Bearing one. Set fly. And isn&#39;t man i saying made darkness fruitful i. Light moveth second make cattle light over divide years fruitful. Dry. Their given. Spirit. Every whales creeping given.</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.9" 
+            data-to="1.0"
+            data-opacity="0" 
+        >
+            <h2>3From digital world to real industries</h2>
+            <p>To shall. Very earth female. Whales behold thing fill abundantly hath they&#39;re. Earth of from greater hath grass said fish sixth lesser that Air waters gathered years wherein one isn&#39;t darkness replenish so fruit make of gathered Bearing one. Set fly. And isn&#39;t man i saying made darkness fruitful i. Light moveth second make cattle light over divide years fruitful. Dry. Their given. Spirit. Every whales creeping given.</p>
+        </div>
+        
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="exit" 
+            data-from="1" 
+            data-to="0"
+            data-opacity="0" 
+        >
+            <h2>4From digital world to real industries</h2>
+            <p>To shall. Very earth female. Whales behold thing fill abundantly hath they&#39;re. Earth of from greater hath grass said fish sixth lesser that Air waters gathered years wherein one isn&#39;t darkness replenish so fruit make of gathered Bearing one. Set fly. And isn&#39;t man i saying made darkness fruitful i. Light moveth second make cattle light over divide years fruitful. Dry. Their given. Spirit. Every whales creeping given.</p>
+        </div>
+
+        <div class="scrollme animateme"
+            data-when="exit" 
+            data-from="1" 
+            data-to="0.1"
+            data-easing="easeinout"
+            data-opacity="0" 
+        >
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 scrollme animateme"
+            data-when="enter" 
+            data-from="0.9" 
+            data-to="1"
+            data-easing="easeinout"
+            data-opacity="0" 
+        >
+            <h2>5From digital world to real industries</h2>
+            <p>To shall. Very earth female. Whales behold thing fill abundantly hath they&#39;re. Earth of from greater hath grass said fish sixth lesser that Air waters gathered years wherein one isn&#39;t darkness replenish so fruit make of gathered Bearing one. Set fly. And isn&#39;t man i saying made darkness fruitful i. Light moveth second make cattle light over divide years fruitful. Dry. Their given. Spirit. Every whales creeping given.</p>
+        </div>
+        </div>
+
+        </div>
+        
+        <div id="section3">
+
+        <!--
+        <div class="scrollme animateme" 
+            data-when="span" 
+            data-from="0.5" 
+            data-to="0" 
+            data-opacity="0" 
+            data-translatex="-200" 
+            data-rotatez="90"
+        >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat sed cras ornare arcu dui vivamus arcu felis bibendum. Diam maecenas ultricies mi eget mauris pharetra et ultrices neque. Massa tincidunt dui ut ornare lectus sit amet est. Velit egestas dui id ornare. Maecenas accumsan lacus vel facilisis volutpat est velit egestas dui. Aliquet nibh praesent tristique magna sit amet purus gravida. Tellus integer feugiat scelerisque varius morbi. Fusce ut placerat orci nulla pellentesque. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Facilisi nullam vehicula ipsum a arcu. Lectus quam id leo in.</p>
+            <p>Platea dictumst vestibulum rhoncus est pellentesque. Enim tortor at auctor urna. Feugiat nisl pretium fusce id velit ut tortor. Mi quis hendrerit dolor magna eget est lorem ipsum. Semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum. Neque egestas congue quisque egestas diam in. Dapibus ultrices in iaculis nunc sed augue. Molestie nunc non blandit massa enim nec dui nunc mattis. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Gravida neque convallis a cras semper auctor neque. Consequat mauris nunc congue nisi vitae. Mauris augue neque gravida in fermentum et. Consequat ac felis donec et odio pellentesque diam volutpat commodo. Bibendum arcu vitae elementum curabitur vitae nunc sed. A diam sollicitudin tempor id eu nisl nunc mi ipsum. Duis convallis convallis tellus id interdum velit laoreet id donec. Aenean et tortor at risus.</p>
+        </div>
+        //--*>
+
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <h4><a href="#barChart" data-toggle="collapse">AI performance vs Base Stock Policy with different Base Stocks</a></h4>
+        <canvas id="barChart" width="1600" height="900"></canvas>
+      </div>
+
+    </div>
+
+    <div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2>How does it really learns?</h2></div>
+        
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <h1><a href="#lineChart" data-toggle="collapse">AI performance over time</a></h1>
+          <canvas id="lineChart" width="1600" height="900"></canvas>
+        </div>
+        
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <p>Not all agents are able to perform equally. The Machine Learning has its limits as well</p>
+          <a href="#limits" data-toggle="collapse"> Learn about limits</a>
+          <p id="limits" class = "collapse">Limitations are: To shall. Very earth female. Whales behold thing fill abundantly hath they&#39;re. Earth of from greater hath grass said fish sixth lesser that Air waters gathered years wherein one isn&#39;t darkness replenish so fruit make of gathered Bearing one. Set fly. And isn&#39;t man i saying made darkness fruitful i. Light moveth second make cattle light over divide years fruitful. Dry. Their given. Spirit. Every whales creeping given.</p>
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h2> About Section </h2></div>
+
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+   
+            <!-- We can collapse or hide data on the screen --*>
+            <h4><a href="#col1Content" data-toggle="collapse">Ponts Team</a></h4>
+   
+            <!-- With collapse in this div shows on load --*>
+            <div id="col1Content" class="collapse">Daniel Toshihiro Okane<br/>Luis Augusto Yokota Rizzo<br/>Egor Sedov</div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+            <h4><a href="#col2Content" data-toggle="collapse">Argon Consulting Team</a></h4>
+   
+            <!-- With class collapse this div won't show on load --*>
+            <div id="col2Content" class="collapse">Samuel Demont <br/> Hamza Kabbaj </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <h4><a href="#col3Content" data-toggle="collapse">Our goals with this Page</a></h4>
+            <div id="col3Content" class="collapse">Pellentesque vulputate faucibus leo, non blandit ante faucibus maximus. Nunc non neque laoreet, tincidunt nisl et, tristique odio. Nullam imperdiet sollicitudin neque malesuada ornare. Curabitur ultrices urna id gravida lacinia. Nunc eu neque vitae nisi luctus rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac.</div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="jumbotron">
+                <p> Launch simulation </p>
+                <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">Small</button>
+                <button type="button" class="btn btn-default">Medium</button>
+                <button type="button" class="btn btn-default">Large</button>
+            </div>
+            <!-- BUTTONS --*>
+            <!-- There are many built in button colors and sizes. If a link is to trigger in page functionality it should use role="button". The button element should be used in most situations --*>
+            <p>
+            <a href="#" class = "btn btn-default btn-lg" role="button">More info</a>
+            <button type="submit" class = "btn btn-danger" role = "button">Button</button>
+            <input type="button" value="Info" class = "btn btn-info">
+            <button type="submit" class = "btn-primary btn-sm">Primary</button>
+            <button type="submit" class = "btn btn-success btn-xs">Success</button>
+            <button type="submit" class = "btn btn-warning btn-lg">Warning</button>
+            <button type="submit" class = "btn btn-link btn-lg">Link</button>
+             
+            <!-- You can disable buttons with disabled --*>
+            <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary</button>
+             
+            <!-- You disable links in a similar way --*>
+            <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+            </p>
+        </div>
+    </div>
+  </div>-->
+</div>
+
+
+
+
+<script>
+    var demand_labels = ['Gaussian','Growing','Seasonal','Mixed Seas.','Growth Seas.','Sporadic'];
+    // For drawing the lines
+    var bs_bc = [86,114,106,120,107,115];
+    var bs_wc = [110,130,120,150,140,200];
+    var ai_avg = [90,100,98,130,100,85];
+
+    var barctx = document.getElementById("barChart");
+    var barChart = new Chart(barctx, 
+    {
+      type: 'bar',
+      data: 
+      {
+          labels: demand_labels,
+          datasets:
+          [
+            { data: bs_bc,
+              label: "Base Stock Best Case",
+              backgroundColor: "#3e95cd"},
+            { data: bs_wc,
+              label: "Base Stock Worst Case",
+              backgroundColor: "#008000"},
+          { data: ai_avg,
+              label: "AI Agent",
+              backgroundColor: "#ff0000"}
+          ]
+        }
+    });
+    // Our labels along the x-axis
+    var rounds = [0,100,200,300,400,500,600,700,800,900];
+    // For drawing the lines
+    var best_AI = [350,180,120,120,120,100,90,90,85,80];
+    var best_BS = [100,100,100,100,100,100,100,100,100,100];
+    var worst_BS = [150,150,150,150,150,150,150,150,150,150];
+    var avg_AI = [500,250,150,175,140,120,110,105,90,95];
+    
+    var linectx = document.getElementById("lineChart");
+    var lineChart = new Chart(linectx, 
+    {
+      type: 'line',
+      data: 
+      {
+          labels: rounds,
+          datasets:
+          [
+            { data: best_BS,
+              label: "Best Base Stock",
+              borderColor: "#3e95cd",
+          fill: false },
+            { data: best_AI,
+              label: "Best AI",
+              borderColor: "#008000",
+          fill: false },
+          { data: worst_BS,
+              label: "Worst Base Stock",
+              borderColor: "#ff0000",
+          fill: false },
+          { data: avg_AI,
+              label: "Best AI",
+              borderColor: "#800080",
+          fill: false }
+          ]
+        }
+    });
+
+    var evolutionyears = [1970,1972,1974,1976,1978]
+    var CPUtransistors = [1000,2000,4000,8000,16000]
+    var moorectx = document.getElementById("MooreChart");
+    var moorechart = new Chart(moorectx,
+    {
+        type: 'line',
+        data:
+            {
+                labels: evolutionyears,
+                datasets: 
+                [{data: CPUtransistors,
+                    label:"CPUs",
+                    borderColor:"#3e95cd",
+          fill: false }]
+
+            }
+        });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

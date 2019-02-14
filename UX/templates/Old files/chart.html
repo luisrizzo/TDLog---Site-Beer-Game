@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>   
+
+    <meta charset="utf-8" />    
+    <!-- import plugin script -->   
+    <meta charset = "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>Lets Play a Beer Game</title>
+    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link     href='http://fonts.googleapis.com/css?family=Sintony:400,700'     rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='static/Chart.min.js'></script>  
+  </head>
+
+  <body>
+    <div class ="container">
+      <div class="page-header">
+        <h1>Chose your parameters</h1> <button id="getdata_button" type="button" class="btn btn-dark">GET DATA !!</button>
+      </div>
+      <div class = "container">
+          <div class = "row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="btn-group-lgup btn-group-lg" role="group" aria-label="...">
+                  <button type="button" class="btn btn-default">Retailer</button>
+                  <button type="button" class="btn btn-default">Wholesaler</button>
+                  <button type="button" class="btn btn-default">Distributor</button>
+                  <button type="button" class="btn btn-default">Factory</button>
+              </div>
+            </div>
+              </div>
+        </div>
+
+    </div>
+  </body>
+
+<!-- SCRIPTS SHOULD ALWAYS BE IN THE BOTTOM OF THE PAGE SO THAT IT LOADS FAST -->
+<script>
+  $("#getdata_button").click(function(){
+      $.get("/get_data35", function(data, status){
+          alert("Received Data from the server : " + data + "\n\nRequest Status: " + status);
+      });
+  });
+</script>
+
+
+
+</html>

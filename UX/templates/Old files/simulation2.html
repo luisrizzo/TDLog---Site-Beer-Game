@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang = "en">
+<style>
+</style>
+<head>
+	<meta charset = "UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title id ="demo" >AI Beer Game</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+</head>
+<body scroll="no" style="position: fixed; overflow-y: scroll; width: 100%; height: 100%">
+	<div class = "container">
+	<div class="page-header">
+		<h1 ><a href="/">Home Page</a>    <a href=/simulation>Simulation</a></h1>
+	</div>
+	</div>
+	<div class = "container">
+		<button class="tablink" onclick="openPage('Page1', this, 'orange')">Luxury</button>
+		<button class="tablink" onclick="openPage('Page2', this, 'orange')" id="defaultOpen">Automotive</button>
+		<button class="tablink" onclick="openPage('Page3', this, 'orange')">Electronic</button>
+		<button class="tablink" onclick="openPage('Page4', this, 'orange')">Custom</button>
+	</div>
+	<div id="Page1" class="tabcontent">
+	<div class = "container">
+  	<h3>Luxe</h3>
+		<p>Louis vuitton, Dior, Hermès</p>
+	  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		  	Taux de Service<br/>
+		  	99%
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			Lead times : Grands entre production et distributor, courts dans la fin de la chaîne
+		</div>
+	</div>
+	</div>
+
+	<div id="Page2" class="tabcontent">
+	<div class = "container">
+	  <h3>Renault</h3>
+	  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		  	Taux de Service<br/>
+		  	95%
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			Lead times très courts entre les 2 premiers. Plus longues entre 2eme et 3eme et moyen pour le derniers
+		</div>
+		</div>
+	</div>
+
+	<div id="Page3" class="tabcontent">
+	<div class = "container">
+	  <h3>NVDIA >> AMD</h3>
+	  <p>wow</p>
+	</div>
+	</div>
+
+	<div id="Page4" class="tabcontent">
+		<div class = "container">
+			<h4>Parameters</h4>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<br/>
+				<button class="playButton" id="play-button" title="Run/Pause" onclick="runSimulation()">
+				  <i class="material-icons">Play</i>
+				</button>
+				<button id="infobutton" type="button"> Info </button>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<div class="TauxService">
+					<label for="TS">Taux de Service</label>
+					<div class="select">
+					  <select id="TS">
+						<option value="99%">99%</option>
+						<option value="95%">95%</option>
+						<option value="90%.">90%</option>
+					  </select>
+					</div>
+				  </div>
+			  </div>
+			  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<div class="LeadTimes">
+					<label for="lt">Lead times</label>
+					<div class="select">
+						<select id="lt">
+						<option value="5">Long lead times</option>
+						<option value="3">Medium lead times</option>
+						<option value="1">Quick lead times</option>
+					</select>
+					</div>
+				</div>
+				</div>
+			 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<div class="OtherAgents">
+				<label for="OtherAgents">Other agents</label>
+				<div class="select">
+				  <select id="OtherAgents">
+					<option value="BaseStock">Rational</option>
+					<option value="HumanLike">Human like</option>
+				  </select>
+				</div>
+				</div>
+			</div>
+			<div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="btn-group btn-group-lg" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default" name = "posbtn" value = "1">Retailer</button>
+				  <button type="button" class="btn btn-default" name = "posbtn" value = "2">Wholesaler</button>
+				 <button type="button" class="btn btn-default" name = "posbtn" value = "3">Distributor</button>
+				 <button type="button" class="btn btn-default" name = "posbtn" value = "4">Factory</button>
+		</div>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class = "container">
+				<button id="getdata_button" type="button" onclick="getinfo()">GET DATA !!</button>
+				<button id="getdata_button" type="button" onclick="printalerte()">Settings</button>		
+			</div>
+		</div>
+	</div>	       	
+	<div class = "row">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<div class="jumbotron">
+				<h3>Demand</h3>
+				<div id="parent">Mouseover to develop all explanations
+				<div id="popup" style="display: none">some text here some text here some text here some text here some text here some text heresome text heresome text page-header some text page-headersome text here</div>
+				</div>
+				<div id="demand_input">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<small>Time independant Demands</small>
+					</div>	
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Uniform</small>
+							<span class="tooltiptext">Uniform demand is when all periods have the exact same constant demand</span>
+						</div>
+
+						<button type="submit"><img src="/static/img/2.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Gaussian</small>
+							<span class="tooltiptext">Gaussian demand is when all periods are a random variable with a normal distribution with same parameters</span>
+						</div>
+						<button type="submit"><img src="/static/img/1.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<small>Sporadic</small>
+						<button type="submit"><img src="/static/img/7.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<small>Seasonal Demands</small>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<small>Simple Seasonality</small>
+						<button type="submit"><img src="/static/img/3.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<small>Multiple Seasonalities</small>
+						<button type="submit"><img src="/static/img/6.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<small>Growing Demands</small>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<small>Endless Growthr</small>
+						<button type="submit"><img src="/static/img/4.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<small>Seasonal + Growth</small>
+						<button type="submit"><img src="/static/img/5.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<small>End of growth</small>
+						<button type="submit"><img src="/static/img/8.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="jumbotron">
+				<h3>Simulation</h3>
+				<h4>Speed of simulation</h4>
+				<div class="slidecontainer"></div>
+				  <input type="range" min="50" max="500"  class="slider" id="myRange" value="100">
+				</div>
+				 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<h4>Retailer</h4>
+					<h5>Stock</h5>
+					<canvas id="retailerChart" width="900" height="900"></canvas>
+				 </div>
+				 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/>
+					<label for="demt"><img id="retailerArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				 </div>
+				 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<h4>Wholesaler</h4>
+					<br/>
+					<canvas id="wholesalerChart" width="900" height="900"></canvas>
+				 </div>
+				 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/>
+					<label for="demt"><img id="wholesalerArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				 </div>
+				 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<h4>Distributor	</h4>
+					<br/>
+					<canvas id="distributorChart" width="900" height="900"></canvas>
+				 </div>
+				 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/>
+					<label for="demt"><img id="distributorArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				 </div>
+				 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<h4>Factory	</h4>
+					<br/>
+					<canvas id="factoryChart" width="900" height="900"></canvas>
+				 </div>
+				 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/>
+					<label for="demt"><img id="factoryArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				 </div>
+			</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			<div class="jumbotron">
+				<h3>Results</h3>
+				<div class="tooltip2"> <p>?</p>
+					<span class="tooltiptext">Our performance = AI agent after the necessary amount of simulations. Other agent is based on classical supply chain formulas that can be found here</span>
+				</div>
+				<canvas id="costChart" width="1600" height="900"></canvas>
+			</div>
+		</div>
+	</div>
+<script>
+  async function getinfo(){
+	  $.get("/get_data", function(data){
+			var usabledata=JSON.parse(data);
+			alert("Received Data from the server : " + usabledata[0]);
+			var time = document.getElementById("myRange").value
+			var i;
+
+			for (i = 0; i < usabledata[0].length ; i++) {
+			  	updateData(retailerChart,usabledata[0][i]);
+				//verifyStock(retailerStock[0], "retailerArrow");
+				updateData(wholesalerChart, usabledata[1][i])
+				//verifyStock(wholesalerStock[0], "wholesalerArrow");
+				updateData(distributorChart, usabledata[2][i]);
+				//verifyStock(distributorStock[0], "distributorArrow");
+				updateData(factoryChart, usabledata[3][i]);
+				//verifyStock(factoryStock[0], "factoryArrow");
+				await sleep(300);
+			};
+		});
+  };
+</script>
+<script>
+	function printalerte(){
+		var taux = document.getElementById("TS");
+		var strTaux = taux.options[taux.selectedIndex].value;
+
+		var leadtime = document.getElementById("lt");
+		var strleadtime = leadtime.options[leadtime.selectedIndex].value;
+
+		var agents = document.getElementById("OtherAgents");
+		var stragents= agents.options[agents.selectedIndex].value;
+
+		var wait = document.getElementById("myRange").value;
+
+		//var position = document.getElementById("posbtn");
+		//var strposition = position.options[position.selectedIndex].value;
+
+		var list_vars = [strTaux, strleadtime, stragents, wait];
+
+		var Json_list = JSON.stringify(list_vars);
+
+		alert(Json_list);
+	};
+</script>
+<script>
+	function tbd_pick sim(){
+		$.ajax({
+			url: "/picksimulation",
+			type: "POST",
+			data: {myArray : list}
+			});
+	};
+</script>
+<script>
+	var minY = -5;
+	var maxY = 10;
+	var retailerStock = [0];
+	var wholesalerStock = [0];
+	var distributorStock = [0];
+	var factoryStock = [0];
+	var retailerChart = new Chart(document.getElementById("retailerChart"), 
+	{
+	type: 'bar',
+	data: {
+		labels: [],
+		datasets:[{ 
+			data: retailerStock, 
+			backgroundColor: "#3e95cd"}]},
+	options: {
+		legend: {display: false},
+		tooltips: {enabled: false},
+		scales: {
+			yAxes: [{
+				ticks: {min: minY, max: maxY}
+			}]}}
+	})
+	var wholesalerChart = new Chart(document.getElementById("wholesalerChart"), 
+	{
+	type: 'bar',
+	data: 
+	{
+		labels: [],
+		datasets:[{ 
+			data: wholesalerStock,
+			backgroundColor: "#3e95cd"}]},
+	options: {
+		legend: {display: false},
+		tooltips: {enabled: false},
+		scales: {
+			yAxes: [{
+				ticks: {min: minY, max: maxY}
+			}]}}
+	})
+	var distributorChart = new Chart(document.getElementById("distributorChart"), 
+	{
+	type: 'bar',
+	data: 
+	{
+		labels: [],
+		datasets:[{
+			data: distributorStock,
+			backgroundColor: "#3e95cd"}]},
+	options: {
+		legend: {display: false},
+		tooltips: {enabled: false},
+		scales: {
+			yAxes: [{
+				ticks: {min: minY, max: maxY}
+			}]}}
+	})
+	var factoryChart = new Chart(document.getElementById("factoryChart"), 
+	{
+	type: 'bar',
+	data: 
+	{
+		labels: [],
+		datasets:[{ 
+			data: factoryStock,
+			backgroundColor: "#3e95cd"}]},
+	options: {
+		legend: {display: false},
+		tooltips: {enabled: false},
+		scales: {
+			yAxes: [{
+				ticks: {min: minY, max: maxY}
+			}]}}
+	})
+
+	var label = [];
+	var cost = [];
+	var costChart = new Chart(document.getElementById("costChart"), 
+	{
+	type: 'line',
+	data: 
+	{
+		labels: label,
+		datasets:
+		[
+		  { data: cost,
+			label: "Total cost",
+			borderColor: "#3e95cd",
+		fill: false }
+		]
+	  }
+	});
+</script>
+
+<script>
+	async function runSimulation(){
+		//results = {key: [label, data, retailerStock, wholesalerStock, distributorStock, factoryStock]}
+		var results = {
+			t0: [1500,86,0,0,0,0],
+			t1: [1600,114,1,1,-1,2],
+			t2: [1700,106,1,2,1,0],
+			t3: [1750,106,1,3,-1,2],
+			t4: [1800,107,1,4,1,-4],
+			t5: [1850,111,1,5,-1,-1],
+			t6: [1900,133,1,6,0,3],
+			t7: [1950,221,1,7,-1,-2],
+			t8: [1999,783,1,8,1,0],
+			t9: [2000, 2478,1,9,-1,0]
+		}
+		var time = document.getElementById("myRange").value
+		removeAllData(costChart);
+		for (var key in results){
+			addData(costChart, results[key][0], results[key][1]);
+
+			updateData(retailerChart, results[key][2]);
+			verifyStock(retailerStock[0], "retailerArrow");
+			updateData(wholesalerChart, results[key][3])
+			verifyStock(wholesalerStock[0], "wholesalerArrow");
+			updateData(distributorChart, results[key][4]);
+			verifyStock(distributorStock[0], "distributorArrow");
+			updateData(factoryChart, results[key][5]);
+			verifyStock(factoryStock[0], "factoryArrow");
+			time = document.getElementById("myRange").value;
+			await sleep(time);
+		}
+	}
+	function addData(chart, label, data) {
+		chart.data.labels.push(label);
+		chart.data.datasets.forEach((dataset) => {
+			dataset.data.push(data);
+		});
+		chart.update();
+	}
+	function removeAllData(chart) {
+	    while (chart.data.labels[0] != null){
+		    chart.data.labels.pop();
+		    chart.data.datasets.forEach((dataset) => {
+		        dataset.data.pop();
+		    });}
+		chart.update();
+	}
+	function updateData(chart, data) {
+		chart.data.datasets[0].data[0] = data;
+		chart.update();
+	}
+	function verifyStock(stock, imageId) {
+		if (stock < 0){	document.getElementById(imageId).src = "/static/img/RedArrow.png";}
+		else { document.getElementById(imageId).src = "/static/img/GreenArrow.png";}
+	}
+	function sleep(ms) {
+	  return new Promise(resolve => setTimeout(resolve, ms));
+	}
+</script>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+	
+	var e = document.getElementById('parent');
+	e.onmouseover = function() {
+	  document.getElementById('popup').style.display = 'block';
+	}
+	e.onmouseout = function() {
+	  document.getElementById('popup').style.display = 'none';
+	}
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>

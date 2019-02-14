@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title id ="demo" >AI Beer Game</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/style_simulation.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
+
+    <script src="/static/js/script.js"></script>
+
+    <!-- For select fields --> 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+
+    <!-- jQuery Knob -->
+    <script src="/static/js/jquery.knob.js"></script>
+    <script>
+        $(function() {
+            $(".dial").knob();
+        });
+    </script>
+</head>
+
+<!-- <body scroll="no" style="position: fixed; overflow-y: scroll; width: 100%; height: 100%"> -->
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#siteNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Beer game</a>
+            </div>
+            <div class="collapse navbar-collapse" id="siteNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/simulation">Simulation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<div class = "container">
+		<button type="button" class="tablink btn btn-primary" onclick="openPage('Page1', this, '#EFBD28')">Luxury</button>
+		<button type="button" class="tablink btn btn-primary" onclick="openPage('Page2', this, '#EFBD28')">Automotive</button>
+		<button type="button" class="tablink btn btn-primary" onclick="openPage('Page3', this, '#292F36')">Food Industry</button>
+		<button type="button" class="tablink btn btn-primary" onclick="openPage('Page4', this, '#4DCCC3')" id="defaultOpen">Custom</button>
+	</div>
+
+	<div id="Page1" class="tabcontent">
+	<div class = "container">
+  	<h3>Luxe</h3>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<br/>
+			<button type="button"  class="playButton btn btn-success"  onclick="getData(1)">
+			  <i class="material-icons">Play</i>
+			</button>
+		</div>
+	  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		  	Service Level<br/>
+		  	99%
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			Lead times: Big in "Wholesaler"-Retailer but short between Distributor and Wholesaler
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+		<div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+	</div>
+	</div>
+
+	<div id="Page2" class="tabcontent">
+	<div class = "container">
+	  	<h3>Automotive Industry</h3>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<br/>
+			<button type="button"  class="playButton btn btn-success" onclick="getData(2)">
+			  <i class="material-icons">Play</i>
+			</button>
+		</div>
+	  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		  	Service Level<br/>
+		  	95%
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			Lead times really small between first 2. Longer on Distributor-Wholesaler transition
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+		<div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+		</div>
+	</div>
+
+	<div id="Page3" class="tabcontent">
+		<div class = "container">
+		  	<h3>Chip Manufacturer</h3>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<br/>
+				<button type="button"  class="playButton btn btn-success"  onclick="getData(3)">
+				  <i class="material-icons">Play</i>
+				</button>
+			</div>
+		  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			  	Service Levels<br/>
+			  	95%
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				Really big lead time between the factory and distributor. Medium from distributor to wholesaler and shor from wholesaler to 
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+			<div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+		</div>
+	</div>
+
+	<div id="Page4" class="tabcontent">
+		<div class = "container">
+			<h3>Make your own</h3>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+					<br/>
+					<button type="button" class="playButton btn btn-success" onclick="getData(4)">
+					  <i class="material-icons">Play</i>
+					</button>
+				</div>
+ 
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-group">
+					<div class="TauxService">
+						<label for="TS">Service Level</label>
+						<div class="select">
+                            <!-- <select id="TS" class="form-control selectpicker" data-style="btn-primary"> -->
+						  <select id="TS" class="form-control">
+							<option value="99">99%</option>
+							<option value="95">95%</option>
+							<option value="90">90%</option>
+						  </select>
+						</div>
+					  </div>
+				  </div>
+
+				  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+					<div class="LeadTimes form-group">
+						<label for="lt">Lead times</label>
+						<div class="select">
+							<select id="lt" class="form-control">
+							<option value="6">Long lead times</option>
+							<option value="3">Medium lead times</option>
+							<option value="1">Quick lead times</option>
+						</select>
+						</div>
+					</div>
+					</div>
+
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+		</div>
+	</div>
+	<div class = "container2">
+		<div class = "row">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+				<h3>Demand</h3>
+				<div id="parent">General explanations
+				<div id="popup" style="display: none">All the demands presented have approximately the same average and standard deviation. Each of them will have AI agents pre-trained to perform at them and will offer a learning opportunity for the</div>
+				</div>
+				<div id="demand_input">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<small>Time independant Demands</small>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Uniform</small>
+							<span class="tooltiptext">Uniform demand is when all periods have the exact same constant demand</span>
+						</div>
+						<button value="Uniform" onclick="chooseDemand(this.value)"><img src="/static/img/img1.png" alt="Img not found"  class="img-responsive" /> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Gaussian</small>
+							<span class="tooltiptext">Gaussian demand is when all periods are a random variable with a normal distribution with same parameters</span>
+						</div>
+						<button value="Gaussian" onclick="chooseDemand(this.value)"><img src="/static/img/img2.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Sporadic</small>
+							<span class="tooltiptext">Sporadic demand alternates between zero demands and higher values orders</span>
+						</div>
+						<button value="Sporadic" onclick="chooseDemand(this.value)"><img src="/static/img/img3.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<small>Seasonal Demands</small>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Simple</small>
+							<span class="tooltiptext">Seasonal demand with one peak period preceeded and followed by a transition period</span>
+						</div>
+						<button value="Seasonal" onclick="chooseDemand(this.value)"><img src="/static/img/img3.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Complex</small>
+							<span class="tooltiptext">Simple seasonal demand but with smaller cycles also included</span>
+						</div>
+						<button value="Mixedseasonal" onclick="chooseDemand(this.value)"><img src="/static/img/img4.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<small>Growing Demands</small>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Endless Growth</small>
+							<span class="tooltiptext">Linear growth demand for the whole simulation</span>
+						</div>
+						<button value="Growing" onclick="chooseDemand(this.value)"><img src="/static/img/img4.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>With Seasonality</small>
+							<span class="tooltiptext">Linear growth that has also a seasonal aspect</span>
+						</div>
+						<button value="Growingseasonal" onclick="chooseDemand(this.value)"><img src="/static/img/img1.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class = "tooltip2">
+							<small>Limited growth</small>
+							<span class="tooltiptext">Linear growth that stabilises after some time</span>
+						</div>
+						<button value="Growthstable" onclick="chooseDemand(this.value)"><img src="/static/img/img2.png" alt="Img not found" class="img-responsive"/> </button>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+				<h3>Simulation</h3>
+				<h4>Speed of simulation</h4>
+				<div class="slidecontainer">
+					<input type="range" min="5" max="500"  class="slider" id="myRange" value="100">
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<button type="button" class="btn btn-default" name = "posbtn" value = "1" onclick="chooseAgent(this.value)">Retailer</button>
+					<h5>Stock</h5>
+					<canvas id="retailerChart" width="900" height="1800"></canvas>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/><br/><br/><br/>
+					<label for="demt"><img id="retailerArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<button type="button" class="btn btn-default" name = "posbtn" value = "2" onclick="chooseAgent(this.value)">Wholesaler</button>
+					<h5>Stock</h5>
+					<canvas id="wholesalerChart" width="900" height="1800"></canvas>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/><br/><br/><br/>
+					<label for="demt"><img id="wholesalerArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<button type="button" class="btn btn-default" name = "posbtn" value = "3" onclick="chooseAgent(this.value)">Distributor</button>
+					<h5>Stock</h5>
+					<canvas id="distributorChart" width="900" height="1800"></canvas>
+				</div> 
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/><br/><br/><br/>
+					<label for="demt"><img id="distributorArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<button type="button" class="btn btn-default" name = "posbtn" value = "4" onclick="chooseAgent(this.value)">Factory</button>
+					<h5>Stock</h5>
+					<canvas id="factoryChart" width="900" height="1800"></canvas>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<br/><br/><br/><br/><br/><br/>
+					<label for="demt"><img id="factoryArrow" src="/static/img/GreenArrow.png" alt="Img not found" class="img-responsive"/></label>
+				</div>
+		 	</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<h3>Results - <div class="tooltip2"> <p>?</p>
+					<span class="tooltiptext">Our performance = AI agent after the necessary amount of simulations. Other agent is based on classical supply chain formulas that can be found here</span></div>
+				</h3>					
+				
+				<canvas id="costChart" width="1600" height="900"></canvas>
+			</div>
+		</div>
+	</div>
+<script>
+$(document).ready(function() {
+	var icon = $('.playcustom');
+	icon.click(function() {
+		icon.toggleClass('active');
+		return false;
+	});
+});
+
+var demand="Gaussian";
+var agent="1";
+var isRunning = false;
+var retailerChart = agent_chart("retailerChart");
+var wholesalerChart = agent_chart("wholesalerChart");
+var distributorChart = agent_chart("distributorChart");
+var factoryChart = agent_chart("factoryChart");
+var costChart = cost_chart("costChart", "Total agent cost", "Total AI cost");
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+var e = document.getElementById('parent');
+e.onmouseover = function() {
+  document.getElementById('popup').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup').style.display = 'none';
+}
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<a href="#" title="Play video" class="playcustom"></a>
+</body>
+</html>
